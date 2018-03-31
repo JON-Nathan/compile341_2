@@ -1,0 +1,7 @@
+num mynum;
+string mystring;
+bool mybool;
+mynum = 3;
+mystring = "mystring";
+mybool = T;
+num num2

@@ -1,0 +1,13 @@
+bool zero;
+zero = T;
+if (eq(dance,zero)) then
+{
+    laugh
+};
+proc dance
+{
+   proc dance
+   {
+      halt
+   }
+}

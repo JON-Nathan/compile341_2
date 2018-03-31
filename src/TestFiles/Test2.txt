@@ -1,0 +1,11 @@
+halt;
+input(sfs);
+halt ;
+string damn;
+haltsd ;
+x = and( and( not a,c), not y);
+y = mult(2,3);
+if ((w<e))
+then {if (not x)
+      then {halt}}
+else {halt}

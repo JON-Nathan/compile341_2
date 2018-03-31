@@ -1,0 +1,4 @@
+if (x) then
+{
+   w = add(we,halt)
+}

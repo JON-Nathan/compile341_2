@@ -1,0 +1,29 @@
+bool zero;
+zero = T;
+if (eq(dance,zero)) then
+{
+   proc dance
+   {
+       halt
+   }
+}
+else
+{
+if (eq(dance,zero)) then
+{
+   proc dance
+   {
+       halt
+   }
+}
+}
+while(T)
+{
+if (eq(dance,zero)) then
+{
+   proc dance
+   {
+       halt
+   }
+}
+}

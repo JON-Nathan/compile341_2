@@ -1,0 +1,43 @@
+input(x);
+proc checknumber {
+    m = n;
+    if((m < f)) then {
+        m = mult(m,-1)
+    };
+    while((m > f)) {
+        m = sub(m,2)
+    };
+    if(eq(m, f)) then {
+        r = "even"
+    } else {
+        r = "odd"
+    }
+}
+proc checknumber {
+    m = n;
+    if((m < f)) then {
+        m = mult(m,-1)
+    };
+    while((m > f)) {
+        m = sub(m,2)
+    };
+    if(eq(m, f)) then {
+        r = "even"
+    } else {
+        r = "odd"
+    }
+}
+proc checknumber {
+    m = n;
+    if((m < f)) then {
+        m = mult(m,-1)
+    };
+    while((m > f)) {
+        m = sub(m,2)
+    };
+    if(eq(m, f)) then {
+        r = "even"
+    } else {
+        r = "odd"
+    }
+}

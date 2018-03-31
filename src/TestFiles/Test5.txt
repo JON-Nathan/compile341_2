@@ -1,0 +1,9 @@
+while (first)
+{while (second)
+{while (third)
+for (f1=0; f1<f0; add(var,1))
+{
+   bool type
+}
+}
+}

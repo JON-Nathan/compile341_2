@@ -1,0 +1,5 @@
+if ((lol)) then
+{
+   pass;
+   x = add(we,we)
+}

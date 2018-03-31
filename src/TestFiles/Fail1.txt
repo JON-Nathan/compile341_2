@@ -1,0 +1,7 @@
+dance;
+proc func{
+    halt
+}}
+proc func{
+    halt
+}

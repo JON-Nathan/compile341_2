@@ -1,0 +1,21 @@
+halt;
+bool h;
+string w;
+num i;
+input(j);
+output(4);
+call;
+x = x;
+x = add(1,2);
+x = sub(2,y);
+x = mult(q,0);
+if (true)
+{
+  if (eq(false, false) )
+  {
+     while (false)
+     {
+         dance = ""
+     }
+  }
+}

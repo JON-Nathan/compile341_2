@@ -1,0 +1,14 @@
+while (eq(x,y)) {
+    x = add(x,1)
+};
+
+for (i = 0; i < x; i = add(i,1)) {
+    output(i)
+};
+
+if ((x < y)) then {
+    r = "even"
+}
+else {
+    r = "odd"
+}

@@ -1,0 +1,7 @@
+input(y);
+proc userdef {
+    x = y
+}
+proc userdef2 {
+    x = add(x,y)
+}

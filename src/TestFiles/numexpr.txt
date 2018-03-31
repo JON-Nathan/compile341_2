@@ -1,0 +1,5 @@
+num1 = num2;
+num1 = -23;
+num1 = add(1,2);
+num1 = sub(num1,num2);
+num1 = mult(add(1,2),sub(2,1))

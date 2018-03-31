@@ -1,0 +1,3 @@
+x = not not not not w;
+x = not not not not w;
+x = eq(not e, e)

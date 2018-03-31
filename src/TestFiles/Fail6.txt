@@ -1,0 +1,4 @@
+dance;
+proc func{
+    halt
+};
