@@ -13,15 +13,23 @@ public class main {
         Scanner S=new Scanner(System.in);
 
         System.out.println("========================================================");
-        System.out.println("  Welcome to COS341 project_1a 2018\n\tcompiled by Ruben and Nathan");
+        System.out.println("  Welcome to COS341 project_2a 2018\n\tcompiled by Kyle and Nathan");
         System.out.println("========================================================");
         System.out.println("\n");
         File curDir = new File("./src/TestFiles");
 
         if (curDir.exists() == false)
         {
-            System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
-            curDir = new File(".");
+            curDir = new File("./TestFiles");
+            if (curDir.exists())
+            {
+
+            }
+            else
+            {
+                System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
+                curDir = new File(".");
+            }
         }
         do{
             System.out.println("========================================================");
@@ -50,12 +58,16 @@ public class main {
 //        ;
         lex.setFileContent(readFile(selectedFile.getAbsolutePath()));
         lex.beginAnaylsis();
-        System.out.println(lex.getLexList());
+        //System.out.println(lex.getLexList());
         /*
         InsertLexer Here
         */
         Parser pars = new Parser(lex.head);
         pars.start();
+
+//        ScopeAnalyser scope= new ScopeAnalyser();
+//        System.out.println("______Scope Analyser_____");
+//        scope.analyse(pars.getRoot());
 
         System.out.println(pars.treeToString());
     }

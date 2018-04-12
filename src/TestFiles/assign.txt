@@ -1,2 +1,10 @@
-halt,
-halt
+lmao;
+halt;
+proc dance
+{
+wow
+}
+proc lol
+{
+dance
+}

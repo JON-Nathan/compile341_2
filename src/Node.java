@@ -3,21 +3,26 @@ import java.util.ArrayList;
 public class Node {
     public Token token;
     public int idNode;
-    public String val;
+    private String val;
     public ArrayList<Node> children;
 
     private static int id = 0;
     public Node()
     {
         children = new ArrayList<Node>();
-        idNode = id++;
+
+    }
+
+    public String getVal()
+    {
+        return val;
     }
 
     public Node(String val)
     {
         children = new ArrayList<Node>();
         this.val = val;
-        idNode = id++;
+        setVal(val);
     }
 
     public void addChild(Node newChild)
@@ -27,14 +32,16 @@ public class Node {
 
     public void setVal(String val)
     {
+        idNode = id++;
         this.val = val;
     }
 
     public Node(String x1, String x2, String x3, String x4)
     {
-        idNode = id++;
+//        idNode = id++;
         children = new ArrayList<>();
         val = x1;
+        setVal(x1);
         Node newNode1 = new Node();
         newNode1.setVal(x2);
         Node newNode2 = new Node();
@@ -50,9 +57,12 @@ public class Node {
 
     public Node(String x1, String x2, String x3)
     {
-        idNode = id++;
+//        idNode = id++;
+        if (x1.equals("PROC_DEFS"))
+            id--;
         children = new ArrayList<>();
         val = x1;
+        setVal(x1);
         Node newNode1 = new Node();
         newNode1.setVal(x2);
         Node newNode2 = new Node();
@@ -63,12 +73,13 @@ public class Node {
 
     public Node(String x1, String x2)
     {
-        idNode = id++;
+//        idNode = id++;
         children = new ArrayList<>();
         val = x1;
+        setVal(x1);
         Node newNode1 = new Node();
         newNode1.setVal(x2);
-        Node newNode2 = new Node();
+//        Node newNode2 = new Node();
         children.add(newNode1);
 
     }

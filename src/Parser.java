@@ -8,8 +8,9 @@ public class Parser {
 
     public void start() {
         head = new Node();
-        head.val = "PROG";
-            func_PROG(tHead.next, head);
+        head.setVal("PROG");
+//        head.val = ;
+        func_PROG(tHead.next, head);
 
 //        head.
     }
@@ -60,7 +61,7 @@ public class Parser {
     {
         //TODO: Should not allow for procedures to exist
 
-boolean procException= false;
+        boolean procException= false;
         if (xCode == null)
             return;
 
@@ -110,7 +111,7 @@ boolean procException= false;
             xCode = findCurve(xCode).next;
             tknOnCurve.next = null;
 
-            Node nde_COND = new Node("INSTR", "COND_LOOP");
+            Node nde_COND = new Node("INSTR", "COND_LOOP ","for");//*****
             //TODO: Add the condition for a for head
 
 //            nde_COND.children.get(0).addChild(new Node("VAR",root.next.next.inputSnippet));
@@ -136,7 +137,7 @@ boolean procException= false;
             Token tknB4Curve = findCurve(xCode);
             xCode = findCurve(xCode).next;
             tknB4Curve.next = null;
-            Node nde_COND = new Node("INSTR", "COND_LOOP");
+            Node nde_COND = new Node("INSTR", "COND_LOOP","while");//*****
             func_COND_BRANCH(root, nde_COND.children.get(0));
             if (xCode != null && xCode.inputSnippet.equals("{"))
             {
@@ -373,7 +374,7 @@ boolean procException= false;
             else if (afta_assignment.symbolClass.equals("Boolean Operator") || afta_assignment.inputSnippet.equals("(") || afta_assignment.inputSnippet.equals("eq"))
             {
                 //TODO this stuff
-                    func_BOOL(afta_assignment, assPar);
+                func_BOOL(afta_assignment, assPar);
             }
             else
             {
@@ -495,7 +496,7 @@ boolean procException= false;
     }
     public void func_CALL(Token xCode, Node parent)
     {
-        parent.addChild(new Node("INSTR","CALL", "User-Defined Name"));
+        parent.addChild(new Node("INSTR","CALL", xCode.inputSnippet));//Change from "User"
     }
 
     public void func_IO(Token xCode, Node parent)
@@ -529,7 +530,7 @@ boolean procException= false;
     private String print(String pre , Node x, boolean isTail)
     {
         String toReturn = "";
-        toReturn += pre + (x.children.size()==0 ? "'--- " : "|---- ") +x.idNode+"."+ x.val + "\n";
+        toReturn += pre + (x.children.size()==0 ? "'--- " : "|---- ") +x.idNode+"."+ x.getVal() + "\n";
         if (x.children.size() != 0)
         {
             for (int i = 0; i < x.children.size()-1; i++)
@@ -672,6 +673,10 @@ boolean procException= false;
         }
         System.out.println("POTENTIAL ERROR MISSING COMMA TOKEN");
         return x;
+    }
+
+    public Node getRoot(){
+        return head;
     }
 //    private void print(String prefix, boolean isTail) {
 //        if (true)
