@@ -119,7 +119,15 @@ public class Parser {
             Token dummy = root.next.next.next.next.next;
             root.next.next.next.next.next = null;
             func_ASSIGN(root.next.next,nde_COND.children.get(0));
-            root = dummy;
+            root = dummy;//on the ";"
+
+            nde_COND.children.get(0).addChild(new Node("VAR", root.next.inputSnippet));
+            nde_COND.children.get(0).addChild(new Node("<"));
+            nde_COND.children.get(0).addChild(new Node("VAR", root.next.next.next.inputSnippet));
+
+            root = root.next.next.next.next; //on the second ";"
+            func_ASSIGN(root.next,nde_COND.children.get(0));
+//            nde_COND.children.get(0).addChild(new Node("VAR", root.next.inputSnippet));
             System.out.println("XXXXXXXXXXXXXXXX "+root.inputSnippet);
             //TODO: check
             //TODO: add 'T' and 'F'

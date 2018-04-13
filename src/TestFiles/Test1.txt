@@ -9,10 +9,10 @@ x = x;
 x = add(1,2);
 x = sub(2,y);
 x = mult(q,0);
-if (true)
+if (true) then
 {
   if (eq(false, false) )
-  {
+  then{
      while (false)
      {
          dance = ""

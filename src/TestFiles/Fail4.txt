@@ -1,13 +1,19 @@
-bool zero;
-zero = T;
-if (eq(dance,zero)) then
-{
-    laugh
-};
-proc dance
-{
-   proc dance
-   {
-      halt
+halt;
+proc first{
+    halt
+}
+proc second{
+   halt;
+   proc second{
+      halt;
+      proc fourth{
+         fourth
+      }
    }
+ proc fourth{
+     second;
+     proc fourth{
+        halt
+     }
+ }
 }

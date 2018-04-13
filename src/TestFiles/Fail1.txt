@@ -1,7 +1,8 @@
 dance;
+x = x2;
 proc func{
     halt
-}}
+}
 proc func{
     halt
 }

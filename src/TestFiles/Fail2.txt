@@ -1,5 +1,13 @@
-dance;
-proc func{
-    halt
-};
-lol
+halt;
+proc outter{
+    outter;
+    innerfail;
+    proc fakie
+    {
+       innerfail
+    }
+}
+proc innerfail{
+    outter;
+    innerfail
+}

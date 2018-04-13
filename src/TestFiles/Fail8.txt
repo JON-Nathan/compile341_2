@@ -1,4 +1,21 @@
-if (x) then
-{
-   w = add(we,halt)
+halt;
+x;
+x = add(y,z);
+y;
+z;
+proc x{
+      x;
+      y;
+      z;
+      halt;
+      proc y
+      {
+          x;
+          y;
+          z;
+          proc z
+          {
+x = add(y,z)
+          }
+      }
 }

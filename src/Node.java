@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Node {
     public Token token;
     public int idNode;
-    private String val;
+    public String val;
     public ArrayList<Node> children;
 
     private static int id = 0;

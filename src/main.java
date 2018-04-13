@@ -65,11 +65,13 @@ public class main {
         Parser pars = new Parser(lex.head);
         pars.start();
 
-//        ScopeAnalyser scope= new ScopeAnalyser();
-//        System.out.println("______Scope Analyser_____");
-//        scope.analyse(pars.getRoot());
+        ScopeAnalyser scope= new ScopeAnalyser();
+        System.out.println("______Scope Analyser_____");
+        scope.analyse(pars.getRoot());
 
-        System.out.println(pars.treeToString());
+//        ScopeAnalyser2 s = new ScopeAnalyser2(pars.head);
+//        System.out.println(s.tableToString());
+//        System.out.println(pars.treeToString());
     }
 
     private static void getAllFiles(File curDir) {

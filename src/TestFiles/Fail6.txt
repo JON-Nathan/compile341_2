@@ -1,4 +1,21 @@
-dance;
-proc func{
-    halt
-};
+halt;
+proc level1
+{
+  halt;
+  proc level2a
+  {
+     halt;
+     proc level3a
+     {
+         halt
+     }
+  }
+   proc level2b
+   {
+        halt;
+        proc level3b
+        {
+            halt
+        }
+   }
+}

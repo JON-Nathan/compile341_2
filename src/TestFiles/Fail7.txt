@@ -1,5 +1,20 @@
-if ((lol)) then
+fake;
+proc first
 {
-   pass;
-   x = add(we,we)
+k;
+    proc inner2{
+       fake
+    }
+}
+proc second
+{
+    fake;
+    proc fake
+    {
+           fake;
+           proc fake
+           {
+              inner2
+           }
+    }
 }

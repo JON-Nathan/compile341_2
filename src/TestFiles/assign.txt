@@ -1,10 +1,16 @@
-lmao;
-halt;
-proc dance
+dance;
+proc first
 {
-wow
+k;
+    proc inner2{
+       fake
+    }
 }
-proc lol
+proc second
 {
-dance
+k;
+    proc fake
+    {
+       inner2
+    }
 }

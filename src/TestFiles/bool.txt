@@ -1,8 +1,1 @@
-mybool = and(T,F);
-mybool = eq(x,y);
-mybool = T;
-mybool = (x < y);
-mybool = (x > y);
-mybool = not T;
-mybool = F;
-mybool = or((x > y), (y < x))
+x = e
