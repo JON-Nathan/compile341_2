@@ -218,7 +218,7 @@ public class Parser {
             func_DECL(root, nde_Code);
 //
         }
-        else if (xCode.symbolClass.equals("User-Defined Name") == true && xCode.next != null && xCode.next.symbolClass.equals("Assignment Operator"))
+        else if (xCode.inputSnippet.equals("T") == false && xCode.inputSnippet.equals("F") == false && xCode.symbolClass.equals("User-Defined Name") == true && xCode.next != null && xCode.next.symbolClass.equals("Assignment Operator"))
         {
             Token assignment = forwardLookAhead(xCode, 1);
             Token afta_assignment = forwardLookAhead(xCode, 2);
@@ -232,7 +232,7 @@ public class Parser {
                     xCode = forwardLookAhead(xCode, 3);
                     tknPtr.next = null;
                 }
-                else if (afta_assignment.symbolClass.equals("User-Defined Name"))
+                else if (afta_assignment.symbolClass.equals("User-Defined Name") && afta_assignment.inputSnippet.equals("T") == false && afta_assignment.inputSnippet.equals("F") == false)
                 {
                     tknPtr = forwardLookAhead(xCode, 2);
                     xCode = forwardLookAhead(xCode, 3);
@@ -253,7 +253,7 @@ public class Parser {
                         tknPtr.next = null;
                     }
                 }
-                else if (afta_assignment.symbolClass.equals("Boolean Operator")|| afta_assignment.inputSnippet.equals("eq") || afta_assignment.inputSnippet.equals("("))
+                else if (afta_assignment.symbolClass.equals("Boolean Operator")|| afta_assignment.inputSnippet.equals("T") || afta_assignment.inputSnippet.equals("F") || afta_assignment.inputSnippet.equals("eq") || afta_assignment.inputSnippet.equals("("))
                 {
                     /*
                         TODO: Fix this in the instance that 'T' becomes a recognized character
@@ -282,6 +282,12 @@ public class Parser {
                         tknPtr = findCurve(xCode);
                         xCode = findCurve(xCode).next;
                         tknPtr.next = null;
+                    }
+                    else if (afta_assignment.inputSnippet.equals("T") || afta_assignment.inputSnippet.equals("F"))
+                    {
+                        tknPtr = xCode;
+                        xCode = afta_assignment.next;
+                        afta_assignment.next = null;
                     }
                 }
                 else
@@ -364,7 +370,7 @@ public class Parser {
             {
                 assPar.addChild(new Node(afta_assignment.inputSnippet));
             }
-            else if (afta_assignment.symbolClass.equals("User-Defined Name"))
+            else if (afta_assignment.symbolClass.equals("User-Defined Name") && afta_assignment.inputSnippet.equals("T") == false && afta_assignment.inputSnippet.equals("F") == false)
             {
                 assPar.addChild(new Node("VAR", afta_assignment.inputSnippet));
             }
@@ -379,7 +385,7 @@ public class Parser {
                     func_CALC(afta_assignment, assPar);
                 }
             }
-            else if (afta_assignment.symbolClass.equals("Boolean Operator") || afta_assignment.inputSnippet.equals("(") || afta_assignment.inputSnippet.equals("eq"))
+            else if (afta_assignment.inputSnippet.equals("F") || afta_assignment.inputSnippet.equals("T") || afta_assignment.symbolClass.equals("Boolean Operator") || afta_assignment.inputSnippet.equals("(") || afta_assignment.inputSnippet.equals("eq"))
             {
                 //TODO this stuff
                 func_BOOL(afta_assignment, assPar);

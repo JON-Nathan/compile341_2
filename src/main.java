@@ -71,7 +71,7 @@ public class main {
 
 //        ScopeAnalyser2 s = new ScopeAnalyser2(pars.head);
 //        System.out.println(s.tableToString());
-//        System.out.println(pars.treeToString());
+        System.out.println(pars.treeToString());
     }
 
     private static void getAllFiles(File curDir) {
