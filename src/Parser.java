@@ -263,6 +263,8 @@ public class Parser {
                     {
                         tknPtr = findCurveNot(xCode);
                         xCode = findCurveNot(xCode).next;
+
+                        System.out.println( "What is after the not "+xCode.inputSnippet );
                         tknPtr.next = null;
                     }
                     else if(afta_assignment.inputSnippet.equals("eq"))
@@ -453,7 +455,7 @@ public class Parser {
         }
         else if (xCode.symbolClass.equals("User-Defined Name"))
         {
-            parent.addChild(new Node("VAR", xCode.inputSnippet));
+            parent.addChild(new Node("BOOL","VAR", xCode.inputSnippet));
         }
         else
         {
