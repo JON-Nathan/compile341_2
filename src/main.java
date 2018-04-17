@@ -16,20 +16,12 @@ public class main {
         System.out.println("  Welcome to COS341 project_2a 2018\n\tcompiled by Kyle and Nathan");
         System.out.println("========================================================");
         System.out.println("\n");
-        File curDir = new File("./src/TestFiles");
+        File curDir = new File("./TestFiles");
 
         if (curDir.exists() == false)
         {
-            curDir = new File("./TestFiles");
-            if (curDir.exists())
-            {
-
-            }
-            else
-            {
-                System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
-                curDir = new File(".");
-            }
+            System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
+            curDir = new File(".");
         }
         do{
             System.out.println("========================================================");
@@ -67,11 +59,23 @@ public class main {
 
         ScopeAnalyser scope= new ScopeAnalyser();
         System.out.println("______Scope Analyser_____");
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to display the AST? [Y/N]");
+        String r=sc.next();
+        if(r.equals("Y"))
+          System.out.println(pars.treeToString());
+        System.out.println("\n_____Feedback:_____");
         scope.analyse(pars.getRoot());
 
-//        ScopeAnalyser2 s = new ScopeAnalyser2(pars.head);
-//        System.out.println(s.tableToString());
-        System.out.println(pars.treeToString());
+
+        System.out.println("Would you like to display the Symbol table? [Y/N]");
+        r=sc.next();
+        if(r.equals("Y")){
+          System.out.println("\n_____Symbol table:_____");
+          scope.printTable();
+        }
+
+
     }
 
     private static void getAllFiles(File curDir) {
