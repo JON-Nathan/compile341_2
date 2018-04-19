@@ -16,12 +16,20 @@ public class main {
         System.out.println("  Welcome to COS341 project_2a 2018\n\tcompiled by Kyle and Nathan");
         System.out.println("========================================================");
         System.out.println("\n");
-        File curDir = new File("./TestFiles");
+        File curDir = new File("./src/TestFiles");
 
         if (curDir.exists() == false)
         {
-            System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
-            curDir = new File(".");
+            curDir = new File("./TestFiles");
+            if (curDir.exists())
+            {
+
+            }
+            else
+            {
+                System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
+                curDir = new File(".");
+            }
         }
         do{
             System.out.println("========================================================");

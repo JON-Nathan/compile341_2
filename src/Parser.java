@@ -264,7 +264,8 @@ public class Parser {
                         tknPtr = findCurveNot(xCode);
                         xCode = findCurveNot(xCode).next;
 
-                        System.out.println( "What is after the not "+xCode.inputSnippet );
+//                        System.out.println( "What is after the not "+xCode.inputSnippet );
+                        System.out.println( "Current Hotspot "+tknPtr.inputSnippet );
                         tknPtr.next = null;
                     }
                     else if(afta_assignment.inputSnippet.equals("eq"))
@@ -413,7 +414,14 @@ public class Parser {
             func_BOOL(xCode.next, not_node.children.get(0));
             parent.addChild(not_node);
         }
-        else if (xCode.symbolClass.equals("Boolean Operator") || xCode.inputSnippet.equals("eq")) //and  or
+        else if (xCode.inputSnippet.equals("eq"))
+        {
+            Node boolNode = new Node("BOOL", root.inputSnippet);
+            boolNode.children.add(new Node("VAR", root.next.next.inputSnippet));
+            boolNode.children.add(new Node("VAR", root.next.next.next.next.inputSnippet));
+            parent.addChild(boolNode);
+        }
+        else if (xCode.symbolClass.equals("Boolean Operator")) //and  or
         {
             Token beforeComma = findBeforeComa(xCode);
             xCode = beforeComma.next.next;
@@ -584,6 +592,9 @@ public class Parser {
                 return x;
             x = x.next;
         }
+//        Node error = null;
+//        error.getVal();
+//        null.dance;
         SynError("Syntax Error: Missing closing Brace" + startOff);
         return x;
     }
@@ -626,7 +637,7 @@ public class Parser {
             if (x.inputSnippet.equals("("))
                 difference++;
 
-            if (foundNot && (x.inputSnippet.equals(")") == true && difference == 0 || x.symbolClass.equals("User-Defined Name") ) )
+            if (foundNot && ((x.inputSnippet.equals(")") == true && difference == 0) || (x.symbolClass.equals("User-Defined Name" )&& difference == 0 ) ) )
                 return x;
             x = x.next;
         }
