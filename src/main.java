@@ -60,20 +60,24 @@ public class main {
         ScopeAnalyser scope= new ScopeAnalyser();
         System.out.println("______Scope Analyser_____");
         Scanner sc=new Scanner(System.in);
-        System.out.println("Would you like to display the AST? [Y/N]");
-        String r=sc.next();
+        //System.out.println("Would you like to display the AST? [Y/N]");
+        //String r=sc.next();
+        String r="N";
         if(r.equals("Y"))
           System.out.println(pars.treeToString());
         System.out.println("\n_____Feedback:_____");
         scope.analyse(pars.getRoot());
+        scope.checkTypes();
+        scope.printTypeCheckedAST(pars.getRoot());
+        scope.printTypeErrors();
 
 
-        System.out.println("Would you like to display the Symbol table? [Y/N]");
-        r=sc.next();
-        if(r.equals("Y")){
-          System.out.println("\n_____Symbol table:_____");
-          scope.printTable();
-        }
+        //System.out.println("Would you like to display the Symbol table? [Y/N]");
+        //r=sc.next();
+      //  if(true/*r.equals("Y")*/){
+          //System.out.println("\n_____Symbol table:_____");
+          //scope.printTable();
+        //}
 
 
     }
