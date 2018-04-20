@@ -32,7 +32,7 @@ public class ScopeAnalyser{
 
   }
 
-  public void analyse(Node root){
+  public boolean analyse(Node root){
     ArrayList<String> temp= new ArrayList<String>();
     temp.add(String.valueOf(IDcount));
     temp.add("ScopeMarker");
@@ -80,6 +80,12 @@ public class ScopeAnalyser{
       System.out.println(e);
     }
 
+    if(redeclaredVariables.size()>0){
+      return false;
+    }else{
+      return true;
+    }
+
   }
 
   ArrayList<String> errorList=new ArrayList<String>();
@@ -110,7 +116,7 @@ public class ScopeAnalyser{
           errorItems.add(currItem);
           continue;
         }
-        if(persistentTable.get(i+4).size()==5){
+        if(persistentTable.size()>(i+4)&&persistentTable.get(i+4).size()==5){
           if(persistentTable.get(i+2).get(4).equals(persistentTable.get(i+4).get(4))){
             persistentTable.get(i).add(persistentTable.get(i+2).get(4));
           }else{
@@ -146,25 +152,45 @@ public class ScopeAnalyser{
       }
 
       if(persistentTable.get(i).get(1).equals("NUMEXPR")){
-        persistentTable.get(i).add("N");
-        continue;
+        if(persistentTable.size()>(i+2)&&persistentTable.get(i+2).size()==5){
+          if(persistentTable.get(i+2).get(4).equals("N")){
+            persistentTable.get(i).add("N");
+            continue;
+          }else{
+            errorList.add("At "+currItem+" non num variable used in NUMEXPR");
+            errorItems.add(currItem);
+          }
+        }else{
+          persistentTable.get(i).add("N");
+          continue;
+        }
       }
 
       if(persistentTable.get(i).get(1).equals("CALC")){
-        if(persistentTable.get(i+4).size()==5){
+
+          /*if(!persistentTable.get(i+2).get(1).equals("NUMEXPR")){
+            errorList.add("At "+currItem+" non NUMEXPR used in CALC");
+            errorItems.add(currItem);
+          }
+
+          if(!persistentTable.get(i+4).get(1).equals("NUMEXPR")){
+            errorList.add("At "+currItem+" non NUMEXPR used in CALC");
+            errorItems.add(currItem);
+          }*/
+
+
+        /*if(persistentTable.get(i+4).size()==5){
           if(!persistentTable.get(i+4).get(4).equals("N")){
             errorList.add("At "+currItem+" non number type variable used in CALC");
             errorItems.add(currItem);
-            continue;
           }
         }
         if(persistentTable.get(i+7).size()==5){
           if(!persistentTable.get(i+7).get(4).equals("N")){
             errorList.add("At "+currItem+" non number type variable used in CALC");
             errorItems.add(currItem);
-            continue;
           }
-        }
+        }*/
 
         persistentTable.get(i).add("N");
         continue;
@@ -180,16 +206,17 @@ public class ScopeAnalyser{
       }
 
       if(persistentTable.get(i).get(1).equals("BOOL")){
-        if(persistentTable.get(i+1).get(1).equals("VAR")&&!(persistentTable.get(i+3).get(1).equals("<")||persistentTable.get(i+3).get(1).equals(">"))){
+        if(persistentTable.get(i+1).get(1).equals("VAR")&&!(persistentTable.size()>(i+3)&&(persistentTable.get(i+3).get(1).equals("<")||persistentTable.get(i+3).get(1).equals(">")))){
           if(persistentTable.get(i+2).get(4).equals("B")){
             persistentTable.get(i).add("B");
           }else{
             errorList.add("At "+currItem+" non bool used as boolean variable");
             errorItems.add(currItem);
           }
+          continue;
         }
 
-        if(persistentTable.get(i+1).equals("eq")){
+        if(persistentTable.get(i+1).get(1).equals("eq")){
           if(persistentTable.get(i+3).get(4).equals(persistentTable.get(i+5).get(4))){
             persistentTable.get(i).add("B");
           }else{

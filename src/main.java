@@ -65,12 +65,15 @@ public class main {
         //if(r.equals("Y"))
           //System.out.println(pars.treeToString());
         //System.out.println("\n_____Feedback:_____");
-        scope.analyse(pars.getRoot());
+        if(scope.analyse(pars.getRoot())){
         System.out.println("\nType checked symbol table:\n");
         scope.checkTypes();
         System.out.println("\nAST:\n");
         scope.printTypeCheckedAST(pars.getRoot());
         scope.printTypeErrors();
+      }else{
+        System.out.println("Please ensure that no variables have been redeclared before continuing");
+      }
 
 
         //System.out.println("Would you like to display the Symbol table? [Y/N]");
