@@ -110,6 +110,13 @@ public class ScopeAnalyser{
         continue;
       }
 
+      if(persistentTable.get(i).get(1).equals("DECL")){
+        persistentTable.get(i).add(persistentTable.get(i+5).get(4));
+        persistentTable.get(i+1).add(persistentTable.get(i+5).get(4));
+        persistentTable.get(i+3).add(persistentTable.get(i+5).get(4));
+        continue;
+      }
+
       if(persistentTable.get(i).get(1).equals("ASSIGN")){
         if(persistentTable.get(i+2).size()!=5){
           errorList.add("At "+currItem+" Assign called without variable to assign to.");
@@ -260,6 +267,9 @@ public class ScopeAnalyser{
     System.out.println("\nErrors found:");
     for(int i=0;i<errorList.size();i++){
       System.out.println(errorList.get(i));
+    }
+    if(errorList.size()==0){
+      System.out.println("None");
     }
   }
 
