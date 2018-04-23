@@ -16,20 +16,12 @@ public class main {
         System.out.println("  Welcome to COS341 project_2a 2018\n\tcompiled by Kyle and Nathan");
         System.out.println("========================================================");
         System.out.println("\n");
-        File curDir = new File("./src/TestFiles");
+        File curDir = new File("./TestFiles");
 
         if (curDir.exists() == false)
         {
-            curDir = new File("./TestFiles");
-            if (curDir.exists())
-            {
-
-            }
-            else
-            {
-                System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
-                curDir = new File(".");
-            }
+            System.out.println("'TestFiles' Folder not found, searching in current Directory for resource files");
+            curDir = new File(".");
         }
         do{
             System.out.println("========================================================");
@@ -53,7 +45,6 @@ public class main {
             }
         }
 
-
         Lex lex = new Lex();
 //        ;
         lex.setFileContent(readFile(selectedFile.getAbsolutePath()));
@@ -66,32 +57,31 @@ public class main {
         pars.start();
 
         ScopeAnalyser scope= new ScopeAnalyser();
-        System.out.println("______Scope Analyser_____");
+        //System.out.println("______Scope Analyser_____");
         Scanner sc=new Scanner(System.in);
-        System.out.println("Would you like to display the AST? [Y/N]");
-//        String r=sc.next();
-//        if(r.equals("Y"))
-//          System.out.println(pars.treeToString());
-//        System.out.println("\n_____Feedback:_____");
-//        scope.analyse(pars.getRoot());
-//
-//
-//        System.out.println("Would you like to display the Symbol table? [Y/N]");
-//        r=sc.next();
-//        if(TRUE){
-//          System.out.println("\n_____Symbol table:_____");
-//          scope.printTable();
-//        }
-
+        //System.out.println("Would you like to display the AST? [Y/N]");
+        //String r=sc.next();
+        String r="N";
+        //if(r.equals("Y"))
+          //System.out.println(pars.treeToString());
+        //System.out.println("\n_____Feedback:_____");
         if(scope.analyse(pars.getRoot())){
-            System.out.println("\nType checked symbol table:\n");
-            scope.checkTypes();
-            System.out.println("\nAST:\n");
-            scope.printTypeCheckedAST(pars.getRoot());
-            scope.printTypeErrors();
-        }else{
-            System.out.println("Please ensure that no variables have been redeclared before continuing");
-        }
+        System.out.println("\nType checked symbol table:\n");
+        scope.checkTypes();
+        System.out.println("\nAST:\n");
+        scope.printTypeCheckedAST(pars.getRoot());
+        scope.printTypeErrors();
+      }else{
+        System.out.println("Please ensure that no variables have been redeclared before continuing");
+      }
+
+
+        //System.out.println("Would you like to display the Symbol table? [Y/N]");
+        //r=sc.next();
+      //  if(true/*r.equals("Y")*/){
+          //System.out.println("\n_____Symbol table:_____");
+          //scope.printTable();
+        //}
 
 
     }
@@ -109,7 +99,7 @@ public class main {
     private static List<String> readFile(String filename) throws IOException
     {
         System.out.println("========================================================");
-        System.out.println("Reading Contents from File\n");
+        //System.out.println("Reading Contents from File\n");
 
         List<String> lines = Files.readAllLines(Paths.get(filename));
         StringBuilder sb = new StringBuilder();
@@ -119,8 +109,8 @@ public class main {
             System.out.println("Something went wrong while reading the files, structure is different");
             System.exit(0);
         }
-        else
-            System.out.println(lines.toString());
+        //else
+            //System.out.println(lines.toString());
 
         return lines;
     }

@@ -50,6 +50,7 @@ public class ScopeAnalyser{
         System.out.println(persistentTable.get(i).get(1)+" in scope "+persistentTable.get(i).get(2));
       }
     }
+
     if(n==0){
       System.out.println("None");
     }*/
@@ -61,6 +62,7 @@ public class ScopeAnalyser{
       System.out.println("None");
 
       /*System.out.println("\nRedeclared procedures:");
+
     n=0;
     for(int i=0;i<declaredProcs.size();i++){
       for(int b=i+1;b<declaredProcs.size();b++){
@@ -177,6 +179,7 @@ public class ScopeAnalyser{
             errorList.add("At "+currItem+" non NUMEXPR used in CALC");
             errorItems.add(currItem);
           }
+
           if(!persistentTable.get(i+4).get(1).equals("NUMEXPR")){
             errorList.add("At "+currItem+" non NUMEXPR used in CALC");
             errorItems.add(currItem);
@@ -288,21 +291,21 @@ public class ScopeAnalyser{
       }else if(persistentTable.get(i).get(1).equals("EndScopeMarker"))
         numTabs--;
       else{
-        for(int t=0;t<numTabs;t++)
-          write+="\t";
-        if(persistentTable.get(i).size()==4){
-          write+=persistentTable.get(i).get(0)+" ["+persistentTable.get(i).get(1)+" = "+persistentTable.get(i).get(3)+" ] "+persistentTable.get(i).get(2);
-        }else{
-          write+=persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2);
-        }
-        write+="\n";
+      for(int t=0;t<numTabs;t++)
+        write+="\t";
+      if(persistentTable.get(i).size()==4){
+        write+=persistentTable.get(i).get(0)+" ["+persistentTable.get(i).get(1)+" = "+persistentTable.get(i).get(3)+" ] "+persistentTable.get(i).get(2);
+      }else{
+        write+=persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2);
       }
+      write+="\n";
+    }
     }
 
-    BufferedWriter writer= new BufferedWriter(new FileWriter("SymbolTable.txt"));
-    writer.write(write);
-    writer.close();
-  }
+      BufferedWriter writer= new BufferedWriter(new FileWriter("SymbolTable.txt"));
+      writer.write(write);
+      writer.close();
+    }
 
   public void printTypeCheckedAST(Node root){
     String toReturn = "";
@@ -316,35 +319,35 @@ public class ScopeAnalyser{
 
   private String print(String pre , Node x, boolean isTail)
   {
-    count++;
-    String toReturn = "";
-    boolean error=checkErrorItems(Integer.toString(count));
-    if(error){
-      toReturn+="\u001B[31m";
-      toReturn += pre + (x.children.size()==0 ? "'--- " : "|---- ") +x.idNode+"."+ x.getVal() + "\n";
-      toReturn+="\u001B[0m";
-    }else{
-      toReturn += pre + (x.children.size()==0 ? "'--- " : "|---- ") +x.idNode+"."+ x.getVal() + "\n";
-    }
-    if (x.children.size() != 0)
-    {
-      for (int i = 0; i < x.children.size()-1; i++)
-      {
-        toReturn += print( pre+(isTail ? "     " : "|    "), x.children.get(i) , false);
+      count++;
+      String toReturn = "";
+      boolean error=checkErrorItems(Integer.toString(count));
+      if(error){
+        toReturn+="\u001B[31m";
+        toReturn += pre + (x.children.size()==0 ? "'--- " : "|---- ") +x.idNode+"."+ x.getVal() + "\n";
+        toReturn+="\u001B[0m";
+      }else{
+        toReturn += pre + (x.children.size()==0 ? "'--- " : "|---- ") +x.idNode+"."+ x.getVal() + "\n";
       }
-      if (x.children.size() > 0)
+      if (x.children.size() != 0)
       {
-        toReturn += print(pre+(isTail ? "     " : "|    "), x.children.get(x.children.size()-1), true);
+          for (int i = 0; i < x.children.size()-1; i++)
+          {
+              toReturn += print( pre+(isTail ? "     " : "|    "), x.children.get(i) , false);
+          }
+          if (x.children.size() > 0)
+          {
+              toReturn += print(pre+(isTail ? "     " : "|    "), x.children.get(x.children.size()-1), true);
+          }
       }
-    }
 
-    return toReturn;
+      return toReturn;
   }
 
   private boolean checkErrorItems(String s){
     for(int i=0;i<errorItems.size();i++){
       if(errorItems.get(i).equals(s))
-        return true;
+       return true;
     }
     return false;
   }
@@ -358,16 +361,16 @@ public class ScopeAnalyser{
       }else if(persistentTable.get(i).get(1).equals("EndScopeMarker"))
         numTabs--;
       else{
-        for(int t=0;t<numTabs;t++)
-          System.out.print("\t");
-        if(persistentTable.get(i).size()==5){
-          System.out.println(persistentTable.get(i).get(0)+" ["+persistentTable.get(i).get(1)+" = "+persistentTable.get(i).get(3)+" | "+persistentTable.get(i).get(4)+" ] "+persistentTable.get(i).get(2));
-        }else if (persistentTable.get(i).size()==4){
-          System.out.println(persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2)+" "+persistentTable.get(i).get(3));
-        }else{
-          System.out.println(persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2));
-        }
+      for(int t=0;t<numTabs;t++)
+        System.out.print("\t");
+      if(persistentTable.get(i).size()==5){
+        System.out.println(persistentTable.get(i).get(0)+" ["+persistentTable.get(i).get(1)+" = "+persistentTable.get(i).get(3)+" | "+persistentTable.get(i).get(4)+" ] "+persistentTable.get(i).get(2));
+      }else if (persistentTable.get(i).size()==4){
+        System.out.println(persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2)+" "+persistentTable.get(i).get(3));
+      }else{
+        System.out.println(persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2));
       }
+    }
     }
   }
 
@@ -561,7 +564,7 @@ public class ScopeAnalyser{
         if(tempTable.get(i-5).get(1).equals(tempTable.get(0).get(1))){
           found=true;
           table.peek().add(tempTable.get(i-5).get(3));
-          table.peek().add(tempTable.get(i-5).get(4));
+            table.peek().add(tempTable.get(i-5).get(4));
           break;
         }
       }
@@ -598,7 +601,7 @@ public class ScopeAnalyser{
     if(s.equals("bool"))
       return "B";
 
-    return "X";
+      return "X";
   }
 
 
