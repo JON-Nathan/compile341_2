@@ -1,1 +1,10 @@
-f = F
+halt;
+proc t1{
+   halt;
+   proc t2{
+       t2
+   }
+}
+proc t2{
+   t2
+}

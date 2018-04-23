@@ -1,21 +1,6 @@
-halt;
-bool h;
-string w;
-num i;
-input(j);
-output(4);
-call;
-x = x;
-x = add(1,2);
-x = sub(2,y);
-x = mult(q,0);
-if (true) then
+string i;
+for (i = 0; i < i ; i = add(i, 1))
 {
-  if (eq(false, false) )
-  then{
-     while (false)
-     {
-         dance = ""
-     }
-  }
+bool bolly;
+bolly = eq(T,F)
 }

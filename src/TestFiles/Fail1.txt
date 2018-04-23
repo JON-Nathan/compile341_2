@@ -1,8 +1,9 @@
-dance;
-x = x2;
-proc func{
-    halt
-}
-proc func{
-    halt
+num num1;
+bool num12;
+string num13;
+
+proc num1
+{
+ halt;
+ output(procy)
 }

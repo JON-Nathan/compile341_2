@@ -9,6 +9,7 @@ k;
 proc second
 {
     fake;
+    inner2;
     proc fake
     {
            fake;

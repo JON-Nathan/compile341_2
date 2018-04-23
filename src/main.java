@@ -69,18 +69,28 @@ public class main {
         System.out.println("______Scope Analyser_____");
         Scanner sc=new Scanner(System.in);
         System.out.println("Would you like to display the AST? [Y/N]");
-        String r=sc.next();
-        if(r.equals("Y"))
-          System.out.println(pars.treeToString());
-        System.out.println("\n_____Feedback:_____");
-        scope.analyse(pars.getRoot());
+//        String r=sc.next();
+//        if(r.equals("Y"))
+//          System.out.println(pars.treeToString());
+//        System.out.println("\n_____Feedback:_____");
+//        scope.analyse(pars.getRoot());
+//
+//
+//        System.out.println("Would you like to display the Symbol table? [Y/N]");
+//        r=sc.next();
+//        if(TRUE){
+//          System.out.println("\n_____Symbol table:_____");
+//          scope.printTable();
+//        }
 
-
-        System.out.println("Would you like to display the Symbol table? [Y/N]");
-        r=sc.next();
-        if(r.equals("Y")){
-          System.out.println("\n_____Symbol table:_____");
-          scope.printTable();
+        if(scope.analyse(pars.getRoot())){
+            System.out.println("\nType checked symbol table:\n");
+            scope.checkTypes();
+            System.out.println("\nAST:\n");
+            scope.printTypeCheckedAST(pars.getRoot());
+            scope.printTypeErrors();
+        }else{
+            System.out.println("Please ensure that no variables have been redeclared before continuing");
         }
 
 

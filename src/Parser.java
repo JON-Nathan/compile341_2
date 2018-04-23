@@ -417,8 +417,15 @@ public class Parser {
         else if (xCode.inputSnippet.equals("eq"))
         {
             Node boolNode = new Node("BOOL", root.inputSnippet);
-            boolNode.children.add(new Node("VAR", root.next.next.inputSnippet));
-            boolNode.children.add(new Node("VAR", root.next.next.next.next.inputSnippet));
+            if (root.next.next.inputSnippet.equals("T") || root.next.next.inputSnippet.equals("F"))
+                boolNode.children.add(new Node("BOOL", root.next.next.inputSnippet));
+            else
+                boolNode.children.add(new Node("VAR", root.next.next.inputSnippet));
+
+            if (root.next.next.next.next.inputSnippet.equals("T") || root.next.next.next.next.inputSnippet.equals("F"))
+                boolNode.children.add(new Node("BOOL", root.next.next.next.next.inputSnippet));
+            else
+                boolNode.children.add(new Node("VAR", root.next.next.next.next.inputSnippet));
             parent.addChild(boolNode);
         }
         else if (xCode.symbolClass.equals("Boolean Operator")) //and  or
@@ -443,6 +450,7 @@ public class Parser {
 //            {
 //                SynError("Syntax Error: Expected a User-Defined Name but found '"+xCode.next.inputSnippet+"'");
 //            }
+
             newNode.addChild(new Node("VAR", xCode.next.inputSnippet));
 //            if (xCode.next.next == null ||  (xCode.next.next.inputSnippet.equals("<")==false && xCode.next.next.inputSnippet.equals(">")==false) == false)
 //            {
