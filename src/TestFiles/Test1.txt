@@ -1,6 +1,6 @@
-string i;
-for (i = 0; i < i ; i = add(i, 1))
-{
-bool bolly;
-bolly = eq(T,F)
+num n;
+input(n);
+if (T)
+then {
+     if (T) then {output(n)}
 }

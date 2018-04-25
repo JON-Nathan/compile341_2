@@ -349,23 +349,49 @@ public class ScopeAnalyser{
     return false;
   }
 
+  public ArrayList<Linkages> getLinkages()
+  {
+    return linkages;
+  }
 
+  public ArrayList<ScopeEntry> getEntries()
+  {
+    return scopeEntries;
+  }
+
+
+  ArrayList<Linkages> linkages = new ArrayList<Linkages>();
+  ArrayList<ArrayList<Integer>> listLinks = new ArrayList<ArrayList<Integer>>();
+  ArrayList<ScopeEntry> scopeEntries = new ArrayList<ScopeEntry>();
   public void printTable(){
     int numTabs=-1;
+    int previousLevel = 0;
     for(int i=0;i<persistentTable.size();i++){
       if(persistentTable.get(i).get(1).equals("ScopeMarker")){
+
         numTabs++;
       }else if(persistentTable.get(i).get(1).equals("EndScopeMarker"))
         numTabs--;
       else{
         for(int t=0;t<numTabs;t++)
           System.out.print("\t");
+        if (previousLevel < Integer.parseInt(persistentTable.get(i).get(2)))
+        {
+          linkages.add(new Linkages(previousLevel, Integer.parseInt(persistentTable.get(i).get(2))));
+          System.out.println("Linked Scopes: "+previousLevel+"<-"+persistentTable.get(i).get(2));
+        }
+        previousLevel = Integer.parseInt(persistentTable.get(i).get(2));
         if(persistentTable.get(i).size()==5){
           System.out.println(persistentTable.get(i).get(0)+" ["+persistentTable.get(i).get(1)+" = "+persistentTable.get(i).get(3)+" | "+persistentTable.get(i).get(4)+" ] "+persistentTable.get(i).get(2));
+          scopeEntries.add(new ScopeEntry(Integer.parseInt(persistentTable.get(i).get(2)), Integer.parseInt(persistentTable.get(i).get(0)), persistentTable.get(i).get(1), persistentTable.get(i).get(3), "NO" ));
         }else if (persistentTable.get(i).size()==4){
           System.out.println(persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2)+" "+persistentTable.get(i).get(3));
+          scopeEntries.add(new ScopeEntry(Integer.parseInt(persistentTable.get(i).get(2)), Integer.parseInt(persistentTable.get(i).get(0)), persistentTable.get(i).get(1), persistentTable.get(i).get(3), null ));
+
         }else{
           System.out.println(persistentTable.get(i).get(0)+" "+persistentTable.get(i).get(1)+" "+persistentTable.get(i).get(2));
+          scopeEntries.add(new ScopeEntry(Integer.parseInt(persistentTable.get(i).get(2)), Integer.parseInt(persistentTable.get(i).get(0)), persistentTable.get(i).get(1), null, null ));
+
         }
       }
     }

@@ -5,12 +5,11 @@ public class Node {
     public int idNode;
     public String val;
     public ArrayList<Node> children;
-
+    public String hasBeenSet = null;
     private static int id = 0;
     public Node()
     {
         children = new ArrayList<Node>();
-
     }
 
     public String getVal()
