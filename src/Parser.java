@@ -194,6 +194,7 @@ public class Parser {
                         tknBfCurly2.next = null;
                         System.out.println("root3: "+root3.inputSnippet);
                         func_CODE(root3.next.next, nde_COND.children.get(0), 2);
+                        //TODO: quick fix 26 April, 2C
                     }
 
                 }

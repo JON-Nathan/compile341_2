@@ -1,6 +1,21 @@
+num one;
+one = 1;
+num two;
+two = 2;
 num n;
-input(n);
-if (T)
-then {
-     if (T) then {output(n)}
+first;
+output(n);
+
+proc first
+{
+   if ( one < two )
+   then { second }
+   else { n = 0 }
+}
+
+proc second
+{
+   if ( one > two )
+   then { n = 0 }
+   else { first }
 }

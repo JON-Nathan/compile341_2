@@ -17,6 +17,8 @@ public class ScopeEntry {
     public String toProperOutput()
     {
         String toReturn = "";
+        if (hasBeenAssigned != null && hasBeenAssigned.equals("ERROR"))
+            toReturn += "\u001B[33m";
         for (int i = 0; i < scopeID; i++)
         {
             toReturn += "\t";
@@ -27,7 +29,9 @@ public class ScopeEntry {
             toReturn += " [ "+oldName+ " -> "+ newName +" ]";
         else
             toReturn += oldName;
-
+        if (hasBeenAssigned != null && hasBeenAssigned.equals("YES"))
+        toReturn += "\t\t" + "";
+        toReturn+="\u001B[0m";
         toReturn += "\n";
         return  toReturn;
     }

@@ -9,9 +9,9 @@ z = T;
 output(x);
 output(y);
 output(z);
-string x;
-num y;
-y = add(y,add(y,2));
+
+num y2;
+y2 = add(y2,add(y2,2));
 bool a;
 bool b;
 bool c;
@@ -25,12 +25,12 @@ num seven;
 a = not T;
 if (F)
 then{
-b = or(e, not e);
-e = ( seven < n );
-t = not and(a,c);
-t = and ( e , e );
-t = or( or( e , or( e , a ) ) , or( e , a ))
-};
+    b = or(e, not e);
+    e = ( seven < n );
+    t = not and(a,c);
+    t = and ( e , e );
+    t = or( or( e , or( e , a ) ) , or( e , a ))
+    };
 t = eq(t,t);
 num x1;
 num y1;

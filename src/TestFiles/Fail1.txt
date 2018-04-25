@@ -1,9 +1,9 @@
-num num1;
-bool num12;
-string num13;
-
-proc num1
+num n;
+if (T) then
 {
- halt;
- output(procy)
+    n = 1;
+    output(n)
+}else
+{
+    output(n)
 }

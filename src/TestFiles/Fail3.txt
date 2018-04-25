@@ -1,9 +1,7 @@
-halt;
-proc outter{
-    outter;
-    innerfail;
-    proc innerfail{
-        outter;
-        innerfail
-    }
+num n;
+if(T)then{
+  n =1;
+  output(n)
+}else{
+  output(n)
 }

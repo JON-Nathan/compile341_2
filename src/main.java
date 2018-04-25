@@ -87,13 +87,15 @@ public class main {
             System.out.println("\nType checked symbol table:\n");
             scope.checkTypes();
             System.out.println("\nAST:\n");
-            scope.printTypeCheckedAST(pars.getRoot());
+//            scope.printTypeCheckedAST(pars.getRoot());
             scope.printTypeErrors();
 
             ScopeAnalyser2 sa = new ScopeAnalyser2(pars.getRoot(), scope.getLinkages(), scope.getEntries());
-            System.out.println("============================\n");
-//            System.out.println(sa.tableToString());
+            System.out.println("===================================================\n");
+            System.out.println("===================================================\n");
+            System.out.println(sa.tableToString());
             sa.print2cTree();
+            System.out.println("============== Successfully Printed 2c ==============\n");
         }else{
             System.out.println("Please ensure that no variables have been redeclared before continuing");
         }

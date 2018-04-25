@@ -1,13 +1,8 @@
-halt;
-proc outter{
-    outter;
-    innerfail;
-    proc fakie
-    {
-       innerfail
-    }
-}
-proc innerfail{
-    outter;
-    innerfail
+bool b;
+if (not b) then {
+   b = b
+};
+for (i = 0; dance < i; dance = add(i, 1))
+{
+    b = b
 }
