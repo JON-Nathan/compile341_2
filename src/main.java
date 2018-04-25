@@ -92,7 +92,7 @@ public class main {
 
             ScopeAnalyser2 sa = new ScopeAnalyser2(pars.getRoot(), scope.getLinkages(), scope.getEntries());
             System.out.println("============================\n");
-            System.out.println(sa.tableToString());
+//            System.out.println(sa.tableToString());
             sa.print2cTree();
         }else{
             System.out.println("Please ensure that no variables have been redeclared before continuing");

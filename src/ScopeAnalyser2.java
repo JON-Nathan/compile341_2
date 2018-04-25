@@ -81,7 +81,7 @@ public class ScopeAnalyser2 {
     private void func_ASSIGN(Node x)
     {
         boolean allowPositiveMark = false;
-        System.out.println(x.idNode+" "+x.getVal()+" child in focus");
+//        System.out.println(x.idNode+" "+x.getVal()+" child in focus");
         Node rightExpression = x.children.get(1);
         Node leftVariable = x.children.get(0).children.get(0);
         int totalTally = 0;
@@ -153,7 +153,7 @@ public class ScopeAnalyser2 {
 
     private int func_BOOL(Node bool)
     {
-        System.out.println("Dies here "+bool.getVal());
+//        System.out.println("Dies here "+bool.getVal());
         if (bool.children.get(0).getVal().equals("not"))
             return func_BOOL(bool.children.get(0).children.get(0));
         else if (bool.children.get(0).getVal().equals("and") || bool.children.get(0).getVal().equals("or") || bool.children.get(0).getVal().equals("eq"))
@@ -193,10 +193,10 @@ public class ScopeAnalyser2 {
         {
             return func_BOOL(bool.children.get(0));
         }
-        Node x = null;
+//        Node x = null;
         System.out.println("SOMETHING WENT WRONG" + bool.idNode +" "+bool.getVal());
-        x.getVal();
-        System.exit(1);
+//        x.getVal();
+//        System.exit(1);
         return  -20;
     }
 
@@ -206,7 +206,7 @@ public class ScopeAnalyser2 {
 //        Node rightOperand = calc.children.get(2).children.get(0);
         int upGrade = 0;
 
-        System.out.println("ENtering CALC with "+ calc.getVal());
+//        System.out.println("ENtering CALC with "+ calc.getVal());
         if ( Character.isDigit(calc.getVal().charAt(0)))
         {
             return 1;
@@ -282,11 +282,11 @@ public class ScopeAnalyser2 {
 
         for (int i = 0; i < x; i++)
         {
-            if (table.get(i) == null)
-                System.out.println( "Experienced a null at: "+x);
+//            if (table.get(i) == null)
+//                System.out.println( "Experienced a null at: "+x);
             if (table.get(i).newName != null && table.get(i).newName.equals(variableUniqueName) == true && allowScopeComparision( table.get(i).scopeID, lockedView) )
             {
-                System.out.println("value of x: "+x+variableUniqueName + "== " + table.get(i).newName );
+//                System.out.println("value of x: "+x+variableUniqueName + "== " + table.get(i).newName );
                 if ( table.get(i).hasBeenAssigned.equals("YES") )
                 {
                     return true;
@@ -336,63 +336,6 @@ public class ScopeAnalyser2 {
 //        (0, 2)
     }
 
-    public void DFTprocSearch(Node x)
-    {
-//        for (int i = 0; i < x.children.size(); i++)
-//        {
-//            Node childToVisit = x.children.get(i);
-//            if(x.val.equals("PROC"))
-//            {
-//                if(CheckIfExists(x.children.get(0).getVal(), true, currentLevel+1))   //Means Exists
-//                {
-//                    table.add(new ScopeEntry(currentLevel, uniqueId, childToVisit.getVal(), "REDEF ", true));
-//                    dynamicTable.push(new ScopeEntry(currentLevel, uniqueId, childToVisit.getVal(), "REDEF ", true));
-//                    dynamicTable.push(new ScopeEntry(-2, -1, "MARKER", "", true));
-//                }
-//                else
-//                {
-//                    table.add(new ScopeEntry(currentLevel, uniqueId, childToVisit.getVal(), "P"+procNewIds++, true));
-//                    dynamicTable.push(new ScopeEntry(currentLevel, uniqueId, childToVisit.getVal(), "REDEF ", true));
-//                    dynamicTable.push(new ScopeEntry(-2, -1, "MARKER", "", true));
-//                }
-//
-//                uniqueId++;
-//                currentLevel++;
-//                DFTprocSearch(x.children.get(1));       // So you skip the name and go straight to the -CODE child path
-//
-//                clearStackTillMarker();
-//                currentLevel--;
-//                break;
-//            }
-//            else
-//            {
-//                DFTprocSearch(childToVisit);
-//            }
-//        }
-    }
-
-    public boolean CheckIfExists(String val, boolean isProc, Integer lvl)
-    {
-//        Stack<ScopeEntry> clone = dynamicTable.get();
-//        for (int i = 0; i < dynamicTable.size(); i++)
-//        {
-//            ScopeEntry entryInFocus = dynamicTable.get(i);
-//            if (entryInFocus.oldName.equals(val) && entryInFocus.scopeLevel <= lvl && isProc )
-//            {
-//                return true;
-//            }
-//        }
-        return false;
-    }
-
-    public void clearStackTillMarker()
-    {
-//        while( dynamicTable.size() > 0)
-//        {
-//            if (dynamicTable.pop().scopeLevel == -2)
-//                break;
-//        }
-    }
 
     public String tableToString()
     {
